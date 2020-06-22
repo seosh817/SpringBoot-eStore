@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 *      .exceptionHandling().accessDeniedPage("/access-denied");
 		 */
 		http.authorizeRequests()
-        	.antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN")
+        	.antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN") // /api/customer 아래로 오는 것들은 전부다 USER 혹은 ADMIN 권한이 있어야한다.
         	.antMatchers("/resources/**").permitAll();
 
 		http.formLogin()
