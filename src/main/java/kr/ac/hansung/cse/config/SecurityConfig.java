@@ -1,12 +1,12 @@
-package kr.ac.hansung.cse.config;
+//package kr.ac.hansung.cse.config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.User.UserBuilder;
 
 /*
  * @Configuration
@@ -18,29 +18,28 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
  * .authorizeRequests() .anyRequest() .permitAll() .and() .csrf().disable(); } }
  */
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//	@Override
 
-	@Override
-
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		// add our users for in memory authentication
 
-		UserBuilder users = User.withDefaultPasswordEncoder();
+//		UserBuilder users = User.withDefaultPasswordEncoder();
 
-		auth.inMemoryAuthentication()
-				.withUser(users.username("alice").password("hialice").roles("USER"))
-				.withUser(users.username("bob").password("hibob").roles("USER"))
-				.withUser(users.username("admin").password("letmein").roles("ADMIN"));
+//		auth.inMemoryAuthentication()
+//				.withUser(users.username("alice").password("hialice").roles("USER"))
+//				.withUser(users.username("bob").password("hibob").roles("USER"))
+//				.withUser(users.username("admin").password("letmein").roles("ADMIN"));
 
-	}
+//	}
 
-	@Override
+//	@Override
 
-	protected void configure(HttpSecurity http) throws Exception {
+//	protected void configure(HttpSecurity http) throws Exception {
 		/*
 		 * http.
 		 *     authorizeRequests() 
@@ -56,19 +55,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 *        .and()
 		 *      .exceptionHandling().accessDeniedPage("/access-denied");
 		 */
-		http.authorizeRequests()
-        	.antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN") // /api/customer 아래로 오는 것들은 전부다 USER 혹은 ADMIN 권한이 있어야한다.
-        	.antMatchers("/resources/**").permitAll();
+//		http.authorizeRequests()
+//        	.antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN") // /api/customer 아래로 오는 것들은 전부다 USER 혹은 ADMIN 권한이 있어야한다.
+//        	.antMatchers("/resources/**").permitAll();
 
-		http.formLogin()
-			.loginPage("/showMyLoginPage")
-			.loginProcessingUrl("/authenticateTheUser")
-			.permitAll();
+//		http.formLogin()
+//			.loginPage("/showMyLoginPage")
+//			.loginProcessingUrl("/authenticateTheUser")
+//			.permitAll();
 		
-		http.logout().permitAll();
+//		http.logout().permitAll();
 		
-		http.exceptionHandling().accessDeniedPage("/accessDenied");		
+//		http.exceptionHandling().accessDeniedPage("/accessDenied");		
 
-	}
+//	}
 
-}
+//}
+
+//사용 하지 않음
