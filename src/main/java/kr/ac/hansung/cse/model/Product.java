@@ -22,7 +22,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @NoArgsConstructor
-@Table(name = "productTable")
+@Table(name = "product_table")
 public class Product implements Serializable {
 
 	
