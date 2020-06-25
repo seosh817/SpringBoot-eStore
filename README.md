@@ -158,7 +158,9 @@ insert into product_table(name, category, price, manufacturer, unit_In_Stock, de
 
 #### ** 설명 **
 security.basic.enabled=false
+
 management.security.enabled=false
+
 security.ignored=/**
 
 세가지 설정을 통해서 security 설정을 disable 시켰습니다.
@@ -331,7 +333,7 @@ response :
 
 
 
- - Fetch all products of a category
+### -  fetch all products of a category
 
 request :  http://localhost:9090/api/v1/products/category/clothes GET
 
@@ -402,8 +404,6 @@ response :
 
 
 ## 3) Spring Boot의 actuator를 활용하여 Products REST API에 대한 URL Mapping 정보를 캡쳐해서 보여라.
-
-request: http://localhost:9090/actuator/mappings GET
 
 ![image](https://user-images.githubusercontent.com/43161981/85687869-37178400-b70c-11ea-8799-e7557b82db4d.png)
 ![image](https://user-images.githubusercontent.com/43161981/85687967-4c8cae00-b70c-11ea-9d4c-b4b31a609007.png)
