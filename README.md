@@ -403,6 +403,8 @@ response :
 
 ## 3) Spring Boot의 actuator를 활용하여 Products REST API에 대한 URL Mapping 정보를 캡쳐해서 보여라.
 
+request: http://localhost:9090/actuator/mappings GET
+
 ![image](https://user-images.githubusercontent.com/43161981/85687869-37178400-b70c-11ea-8799-e7557b82db4d.png)
 ![image](https://user-images.githubusercontent.com/43161981/85687967-4c8cae00-b70c-11ea-9d4c-b4b31a609007.png)
 ![image](https://user-images.githubusercontent.com/43161981/85688012-57474300-b70c-11ea-8029-43298f0d9fb4.png)
