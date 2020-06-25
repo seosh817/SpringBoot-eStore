@@ -20,7 +20,6 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
@@ -31,43 +30,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		UserBuilder users = User.withDefaultPasswordEncoder();
 
-		auth.inMemoryAuthentication()
-				.withUser(users.username("alice").password("hialice").roles("USER"))
+		auth.inMemoryAuthentication().withUser(users.username("alice").password("hialice").roles("USER"))
 				.withUser(users.username("bob").password("hibob").roles("USER"))
 				.withUser(users.username("admin").password("letmein").roles("ADMIN"));
 
 	}
 
 	@Override
-
 	protected void configure(HttpSecurity http) throws Exception {
 		/*
-		 * http.
-		 *     authorizeRequests() 
-		 * 		   .antMatchers("/api/customers/**").hasAnyRole("USER", "ADMIN") 
-		 * 		   .antMatchers("/resources/**").permitAll() 
-		 *         .and() 
-		 *     .formLogin()
-		 * 	  	   .loginPage("/showMyLoginPage")
-		 * 	   	   .loginProcessingUrl("/authenticateTheUser").permitAll() 
-		 *         .and() 
-		 *      .logout()
-		 *        .permitAll();
-		 *        .and()
-		 *      .exceptionHandling().accessDeniedPage("/access-denied");
+		 * http. authorizeRequests()
+		 * .antMatchers("/api/customers/**").hasAnyRole("USER", "ADMIN")
+		 * .antMatchers("/resources/**").permitAll() .and() .formLogin()
+		 * .loginPage("/showMyLoginPage")
+		 * .loginProcessingUrl("/authenticateTheUser").permitAll() .and() .logout()
+		 * .permitAll(); .and() .exceptionHandling().accessDeniedPage("/access-denied");
 		 */
-		http.authorizeRequests()
-        	.antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN")
-        	.antMatchers("/resources/**").permitAll();
-			
-		http.formLogin()
-			.loginPage("/showMyLoginPage")
-			.loginProcessingUrl("/authenticateTheUser")
-			.permitAll();
-		
+		http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();
+		// .antMatchers("/api/customers/**").hasAnyRole("USER","ADMIN")
+		// .antMatchers("/resources/**").permitAll()
+		// .antMatchers("/api/v1/**").permitAll()
+
+		http.formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll();
+
 		http.logout().permitAll();
-		
-		http.exceptionHandling().accessDeniedPage("/accessDenied");		
+
+		http.exceptionHandling().accessDeniedPage("/accessDenied");
 
 	}
 

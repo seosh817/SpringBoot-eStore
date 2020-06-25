@@ -30,7 +30,7 @@ public class ProductController {
 	public ResponseEntity<Product> postProduct(@RequestBody Product product) {
 		try {
 			Product _product = repository.save(product);
-			return new ResponseEntity<>(null, HttpStatus.CREATED);
+			return new ResponseEntity<>(_product, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
 		}
@@ -54,7 +54,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{id}")
-	public ResponseEntity<Product> getProductById(@PathVariable("id") long id) {
+	public ResponseEntity<Product> getProductById(@PathVariable("id") int id) {
 		Optional<Product> product = repository.findById(id);
 
 		if (product.isPresent()) {
@@ -65,7 +65,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/category/{category}")
-	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String category) {
+	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("category") String category) {
 		try {
 			List<Product> products = repository.findByCategory(category);
 
@@ -79,9 +79,10 @@ public class ProductController {
 	}
 
 	@PutMapping("/products/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
+	public ResponseEntity<Product> updateProduct(@PathVariable("id") int id, @RequestBody Product product) {
 		Optional<Product> productData = repository.findById(id);
-
+		System.out.println(productData.toString());
+		
 		if (productData.isPresent()) {
 			Product _product = productData.get();
 			_product.setName(product.getName());
@@ -93,18 +94,28 @@ public class ProductController {
 			return new ResponseEntity<>(repository.save(_product), HttpStatus.OK);
 
 		} else {
+			System.out.println(productData.toString());
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@DeleteMapping("products/{id}")
-	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
+	@DeleteMapping("/products/{id}")
+	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") int id) {
 		try {
 			repository.deleteById(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
 		}
 	}
-
+	
+	@DeleteMapping("/proudcts")
+	public ResponseEntity<HttpStatus> deleteAllProducts() {
+		try {
+			repository.deleteAll();
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+		}
+	}
 }
