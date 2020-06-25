@@ -397,7 +397,7 @@ response :
 
 ### - Delete (DELETE): delete product with id=N
  
-request : http://localhost:9090/api/v1/products/1 DELETE
+request : http://localhost:9090/api/v1/products/2 DELETE
 
 response :
 ![image](https://user-images.githubusercontent.com/43161981/85680781-945c0700-b705-11ea-863c-ee62bad36e18.png)
