@@ -9,15 +9,15 @@
 
 
 
-#### 조건 1 : Database 이름 helloproductdb-1592058  <a id="database-name"></a> 
+### 조건 1 : Database 이름 helloproductdb-1592058  <a id="database-name"></a> 
 -------------
-[**코드 링크**] (https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/application.properties)
+[**코드 링크**](https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/application.properties)
 
 #### ** 설명 **
 spring.datasource.url= jdbc:mysql://localhost:3306/helloproductdb-1592058?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
 를 통해 DB명을 설정해주었습니다.
 
-#### **application.properties**
+### **application.properties**
 
 ```java
 server.port=9090
@@ -47,9 +47,9 @@ logging.file.name=app1.log
 
 ```
 
-#### 조건 2 : 테이블 이름 product_table<a id="table-name"></a>
+### 조건 2 : 테이블 이름 product_table<a id="table-name"></a>
 -------------
-[**코드 링크**] (https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/java/kr/ac/hansung/cse/model/Product.java)
+[**코드 링크**](https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/java/kr/ac/hansung/cse/model/Product.java)
 
 **설명**
 @Table(name = "product_table") 어노테이션을 이용해서 테이블의 이름을 정해주었습니다.
@@ -130,9 +130,9 @@ public class Product implements Serializable {
 
 
 
-#### 조건 3 : data.sql에 10개의 데이터 생성  <a id="data-sql"></a>
+### 조건 3 : data.sql에 10개의 데이터 생성  <a id="data-sql"></a>
 -------------
-[**코드 링크**] (https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/data.sql)
+[**코드 링크**](https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/data.sql)
 
 **data.sql**
 
@@ -151,10 +151,10 @@ insert into product_table(name, category, price, manufacturer, unit_In_Stock, de
 ```
 
 
-#### 조건 4 : security 설정하지 않음 <a id="security-enabled"></a>
+### 조건 4 : security 설정하지 않음 <a id="security-enabled"></a>
 -------------
 
-[**코드 링크**] (https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/application.properties)
+[**코드 링크**](https://github.com/slflfl12/SpringBoot-eStore/blob/master/src/main/resources/application.properties)
 
 #### ** 설명 **
 security.basic.enabled=false
@@ -193,10 +193,12 @@ logging.file.name=app1.log
 
 ```
 
-#### 조건 5 : Postman 이용하여 요청 응답 메시지 받기 <a id="postman"></a>
+### 조건 5 : Postman 이용하여 요청 응답 메시지 받기 <a id="postman"></a>
 -------------
 
- - Create/Add(POST): create new product
+## 2) API method
+
+### - Create/Add(POST): create new product
  
   request: http://localhost: 9090/api/v1/products POST
  ![image](https://user-images.githubusercontent.com/43161981/85679138-18ad8a80-b704-11ea-8cb1-c454f00b5c5d.png)
@@ -207,7 +209,7 @@ response:
 
 ![image](https://user-images.githubusercontent.com/43161981/85678984-f4ea4480-b703-11ea-8d0c-8823fde78223.png)
 
- - Get full list of products: 
+### - Get full list of products: 
  
  request: http://localhost:9090/api/v1/products GET
  
@@ -320,7 +322,7 @@ response :
 
 
 
- - Get details of products with id=N
+### - Get details of products with id=N
  
 request : http://localhost:9090/api/v1/products/2 GET
 
@@ -378,7 +380,7 @@ response :
 ```
 
 
- - Update (PUT): modify values of product with id=N
+### - Update (PUT): modify values of product with id=N
  
  request : http://localhost:9090/api/v1/products/2 PUT
  
@@ -391,12 +393,22 @@ response :
 ![image](https://user-images.githubusercontent.com/43161981/85680615-6d9dd080-b705-11ea-88cc-52ab1fc61cf5.png)
 
 
- - Delete (DELETE): delete product with id=N
+### - Delete (DELETE): delete product with id=N
  
-  request : http://localhost:9090/api/v1/products/1 DELETE
+request : http://localhost:9090/api/v1/products/1 DELETE
 
 response :
 ![image](https://user-images.githubusercontent.com/43161981/85680781-945c0700-b705-11ea-863c-ee62bad36e18.png)
 
- 
+
+## 3) Spring Boot의 actuator를 활용하여 Products REST API에 대한 URL Mapping 정보를 캡쳐해서 보여라.
+
+![image](https://user-images.githubusercontent.com/43161981/85687869-37178400-b70c-11ea-8799-e7557b82db4d.png)
+![image](https://user-images.githubusercontent.com/43161981/85687967-4c8cae00-b70c-11ea-9d4c-b4b31a609007.png)
+![image](https://user-images.githubusercontent.com/43161981/85688012-57474300-b70c-11ea-8029-43298f0d9fb4.png)
+![image](https://user-images.githubusercontent.com/43161981/85688046-5f06e780-b70c-11ea-801e-44f66649eefd.png)
+![image](https://user-images.githubusercontent.com/43161981/85688112-6cbc6d00-b70c-11ea-9c47-727a1ca10840.png)
+![image](https://user-images.githubusercontent.com/43161981/85688148-73e37b00-b70c-11ea-9e29-b5846f356fca.png)
+![image](https://user-images.githubusercontent.com/43161981/85688179-7ba31f80-b70c-11ea-90d5-940ec6145560.png)
+
 
